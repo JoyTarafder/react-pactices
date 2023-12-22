@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  let [counter, setCounter] = useState(0)
+  let [counter, setCounter] = useState(5)
 
 
   const addValue = () => { 
@@ -19,10 +19,12 @@ function App() {
   if (counter < 0) {
     setCounter(0)
     alert("Value is less than 0");
+    console.log("Stoped Clicking remove value button");
   }
   else if (counter > 20) { 
     setCounter(20)
     alert("Value is greater than 20");
+    console.log("Stoped Clicking add value button");
   }
 
 
