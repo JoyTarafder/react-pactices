@@ -15,20 +15,24 @@ function App() {
     setCounter(counter - 1)
     console.log("Clicked",Math.random(),counter)
   }
+
   if (counter < 0) {
     setCounter(0)
+    alert("Value is less than 0");
   }
   else if (counter > 20) { 
     setCounter(20)
+    alert("Value is greater than 20");
   }
 
 
   return (
     <>
       <h1>Chai aur react {counter}</h1>
-      <button onClick={addValue}>Added</button>
+      <button onClick={addValue}>Added {counter}</button>
       <br /><br />
-      <button onClick={removeValue}>Remove Value</button>
+      <button onClick={removeValue}>Remove Value {counter}</button>
+      <p>Footer {counter}</p>
     </>
   )
 }
