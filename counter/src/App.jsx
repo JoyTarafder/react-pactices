@@ -15,6 +15,12 @@ function App() {
     setCounter(counter - 1)
     console.log("Clicked",Math.random(),counter)
   }
+  if (counter < 0) {
+    setCounter(0)
+  }
+  else if (counter > 20) { 
+    setCounter(20)
+  }
 
 
   return (
