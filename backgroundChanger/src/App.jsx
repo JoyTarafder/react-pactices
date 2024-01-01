@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react"
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [color, setColor] = useState("olive")
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+    <div className="w-full h-screen duration-200"
+    style={{backgroundColor: color}}
+    >
+      <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2">
+        <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
+          <button className="w-16 h-10 rounded-full bg-red-500" onClick={() => setColor("red")}>Red</button>
+          <button className="w-16 h-10 rounded-full bg-green-500" onClick={() => setColor("green")}>Green</button>
+          <button className="w-16 h-10 rounded-full bg-blue-500" onClick={() => setColor("blue")}>Blue</button>
+          <button className="w-16 h-10 rounded-full bg-yellow-500" onClick={() => setColor("yellow")}>Yellow</button>
+          <button className="w-16 h-10 rounded-full bg-purple-500" onClick={() => setColor("purple")}>Purple</button>
+          <button className="w-16 h-10 rounded-full bg-pink-500" onClick={() => setColor("pink")}>Pink</button>
+          <button className="w-16 h-06 rounded-full bg-gray-500" onClick={() => setColor("gray")}>Gray</button>
+          <button className="w-16 h-10 rounded-full bg-indigo-500" onClick={() => setColor("indigo")}>Indigo</button>
+          <button className="w-16 h-10 rounded-full bg-teal-500" onClick={() => setColor("teal")}>Teal</button>
+          <button className="w-16 h-10 rounded-full bg-orange-500" onClick={() => setColor("orange")}>Orange</button>
+          <button className="w-16 h-10 rounded-full bg-black text-white" onClick={() => setColor("black")}>Black</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
+
   )
 }
 
