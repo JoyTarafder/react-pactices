@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 
 function App() {
@@ -8,27 +8,28 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false)
 
   const generatePassword = useCallback(() => {
-    const numbers = '0123456789'
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    let charsAllowed = ''
-    let password = ''
+    let numbers = '0123456789'
+    let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    let pass = ''
 
     if (numberAllowed) {
-      charsAllowed += numbers
+      chars += numbers
     }
     if (charAllowed) {
-      charsAllowed += chars
+      chars += "!@#$%^&*()_+~`|}{[]:;?><,./-="
     }
 
     for (let i = 1; i <= passwordLength; i++) {
-      const randomIndex = Math.floor(Math.random() * charsAllowed.passwordLength + 1)
-      password += charsAllowed[randomIndex]
+      const randomIndex = Math.floor(Math.random() * chars.passwordLength + 1)
+      pass += chars.charAt(randomIndex)
     }
 
-    setPassword(password)
+    setPassword(pass)
   },[passwordLength, numberAllowed, charAllowed,setPassword])
 
-  
+  useEffect(() => { 
+    generatePassword()
+  },[passwordLength, numberAllowed, charAllowed, generatePassword])
   return (
     <div>
       <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 text-orange-500 bg-gray-700'>
@@ -53,7 +54,7 @@ function App() {
               className='cursor-pointer'
               onChange={(e) => setPasswordLength(e.target.value)}
             />
-            <label>Length { passwordLength }</label>
+            <label>Length: { passwordLength }</label>
           </div>
           <div className='flex items-center gap-x-1'>
             <input
