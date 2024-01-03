@@ -3,33 +3,32 @@ import { useState, useCallback, useEffect } from 'react'
 
 function App() {
   const [password, setPassword] = useState('')
-  const [passwordLength, setPasswordLength] = useState(8)
+  const [length, setLength] = useState(8)
   const [numberAllowed, setNumberAllowed] = useState(false)
   const [charAllowed, setCharAllowed] = useState(false)
 
   const generatePassword = useCallback(() => {
-    let numbers = '0123456789'
     let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     let pass = ''
 
     if (numberAllowed) {
-      chars += numbers
+      chars += '0123456789'
     }
     if (charAllowed) {
-      chars += "!@#$%^&*()_+~`|}{[]:;?><,./-="
+      chars += "!@#$%^&*()_+~`|}{[]:;?><"
     }
 
-    for (let i = 1; i <= passwordLength; i++) {
-      const randomIndex = Math.floor(Math.random() * chars.passwordLength + 1)
+    for (let i = 1; i <= length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length + 1)
       pass += chars.charAt(randomIndex)
     }
 
     setPassword(pass)
-  },[passwordLength, numberAllowed, charAllowed,setPassword])
+  },[length, numberAllowed, charAllowed,setPassword])
 
   useEffect(() => { 
     generatePassword()
-  },[passwordLength, numberAllowed, charAllowed, generatePassword])
+  },[length, numberAllowed, charAllowed, generatePassword])
   return (
     <div>
       <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 text-orange-500 bg-gray-700'>
@@ -50,11 +49,11 @@ function App() {
         </div>
         <div className='flex text-sm gap-x-2'>
           <div className='flex items-center gap-x-1'>
-            <input type="range" min={6} max={100} value={passwordLength}
+            <input type="range" min={6} max={100} value={length}
               className='cursor-pointer'
-              onChange={(e) => setPasswordLength(e.target.value)}
+              onChange={(e) => setLength(e.target.value)}
             />
-            <label>Length: { passwordLength }</label>
+            <label>Length: { length }</label>
           </div>
           <div className='flex items-center gap-x-1'>
             <input
