@@ -46,7 +46,15 @@ function App() {
           > copy
           </button>
         </div>
-        
+        <div className='flex text-sm gap-x-2'>
+          <div className='flex items-center gap-x-1'>
+            <input type="range" min={6} max={100} value={passwordLength}
+              className='cursor-pointer'
+              onChange={(e) => setPasswordLength(e.target.value)}
+            />
+            <label htmlFor="">Length = { passwordLength }</label>
+          </div>
+        </div>
       </div>
     </div>
   )
