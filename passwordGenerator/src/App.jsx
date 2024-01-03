@@ -52,7 +52,23 @@ function App() {
               className='cursor-pointer'
               onChange={(e) => setPasswordLength(e.target.value)}
             />
-            <label htmlFor="">Length = { passwordLength }</label>
+            <label>Length { passwordLength }</label>
+          </div>
+          <div className='flex items-center gap-x-1'>
+            <input
+              type="checkbox"
+              defaultChecked={numberAllowed}
+              id='numberInput'
+              onChange={() => { setNumberAllowed((prev) => !prev); }}
+            />
+            <label htmlFor="numberInput">Numbers</label>
+            <input
+              type="checkbox"
+              defaultChecked={charAllowed}
+              id='charInput'
+              onChange={(e) => { setCharAllowed((prev) => !prev); }}
+            />
+            <label htmlFor='charInput'>Characters</label>
           </div>
         </div>
       </div>
