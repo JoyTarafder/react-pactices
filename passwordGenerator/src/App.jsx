@@ -24,6 +24,7 @@ function App() {
     setPassword(pass)
   },[length, numberAllowed, charAllowed,setPassword])
 
+// useEffect is used to run the function when the component is mounted and when the dependencies change
   useEffect(() => { 
     generatePassword()
   },[length, numberAllowed, charAllowed, generatePassword])
