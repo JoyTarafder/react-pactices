@@ -28,6 +28,7 @@ function App() {
     setPassword(password)
   },[passwordLength, numberAllowed, charAllowed,setPassword])
 
+  
   return (
     <div>
       <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 text-orange-500 bg-gray-700'>
