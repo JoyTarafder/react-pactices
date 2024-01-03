@@ -7,16 +7,14 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false)
   const [charAllowed, setCharAllowed] = useState(false)
 
+  // useCallback is used to prevent the function from being re-created every time the component is re-rendered
+
   const generatePassword = useCallback(() => {
     let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     let pass = ''
 
-    if (numberAllowed) {
-      chars += '0123456789'
-    }
-    if (charAllowed) {
-      chars += "!@#$%^&*()_+~`|}{[]:;?><"
-    }
+    if (numberAllowed) chars += '0123456789'
+    if (charAllowed) chars += "!@#$%^&*()_+~`|}{[]:;?><"
 
     for (let i = 1; i <= length; i++) {
       const randomIndex = Math.floor(Math.random() * chars.length + 1)
